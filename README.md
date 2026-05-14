@@ -8,8 +8,16 @@
 * 看 pdf文档，推荐: https://github.com/uaxe/geektime-pdfs 🌟🌟🌟
 * 看 音视频，推荐: https://github.com/zkep/my-geektime 🌟🌟🌟🌟🌟
 
-### [全文搜索](https://github.com/uaxe/geektime-docs/blob/master/fultext-search/README.md)
-感谢 [KonghaYao](https://github.com/KonghaYao) 提供全文搜索功能
+### 全文搜索
+
+根站点使用 [Pagefind](https://pagefind.app/) 生成静态全文搜索索引。构建根站点后执行：
+
+```shell
+npm ci
+npm run pagefind
+```
+
+生成的搜索索引位于 `site/pagefind/`，访问根站点时可直接使用顶部搜索入口。
 
 ###  markdown 在线文档
 
@@ -31,9 +39,27 @@ docker run -d -p 8091:8091 --restart always  --name geektime-docs  zkep/geektime
 ```shell
 git clone --single-branch --branch master --depth 1 https://github.com/uaxe/geektime-docs.git
 
-pip install mkdocs-material
+pip install -r requirements.txt
 
-cd geektime-docs/后端-架构/说透中台/
+cd geektime-docs/
+
+npm ci
+
+python mkdocs.py
+
+mkdocs build
+
+npm run pagefind
+
+python app.py
+```
+
+浏览器访问：<http://127.0.0.1:8091/>
+
+单课程预览：
+
+```shell
+cd 后端-架构/说透中台/
 
 mkdocs serve
 ```
@@ -50,8 +76,6 @@ mkdocs serve
 <a href="https://github.com/uaxe/geektime-docs/graphs/contributors"><img src="https://opencollective.com/geektime-docs/contributors.svg?width=890" /></a>
 
    
-
-
 
 
 

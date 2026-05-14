@@ -36,32 +36,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial theme check
   checkTheme();
 });
-
-// Inkeep --------------------------------------------------------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const enableSearchBar = true;
-
-  const inkeepScript = document.createElement("script");
-  inkeepScript.src = "https://unpkg.com/@inkeep/uikit-js@0.3.18/dist/embed.js";
-  inkeepScript.type = "module";
-  inkeepScript.defer = true;
-  document.head.appendChild(inkeepScript);
-
-  if (enableSearchBar) {
-    const containerDiv = document.createElement("div");
-    containerDiv.style.transform = "scale(0.7)";
-    containerDiv.style.transformOrigin = "left center";
-
-    const inkeepDiv = document.createElement("div");
-    inkeepDiv.id = "inkeepSearchBar";
-    containerDiv.appendChild(inkeepDiv);
-
-    const headerElement = document.querySelector(".md-header__inner");
-    const searchContainer = headerElement.querySelector(".md-header__source");
-
-    if (headerElement && searchContainer) {
-      headerElement.insertBefore(containerDiv, searchContainer);
-    }
-  }
-
-});

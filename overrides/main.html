@@ -1,5 +1,39 @@
 <!--geek time docs 🚀, MIT license-->
 
-{% extends "base.html" %} {% block announce %}
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <link href="{{ 'pagefind/pagefind-component-ui.css' | url }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+  <pagefind-modal instance="pf" heading="搜索课程文档"></pagefind-modal>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ 'pagefind/pagefind-component-ui.js' | url }}" type="module"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var header = document.querySelector(".md-header__inner");
+      if (!header || header.querySelector("pagefind-modal-trigger")) {
+        return;
+      }
+
+      var trigger = document.createElement("pagefind-modal-trigger");
+      trigger.setAttribute("instance", "pf");
+      trigger.setAttribute("compact", "");
+      trigger.setAttribute("hide-shortcut", "");
+      trigger.setAttribute("placeholder", "搜索课程文档");
+
+      var source = header.querySelector(".md-header__source");
+      header.insertBefore(trigger, source);
+    });
+  </script>
+{% endblock %}
+
+{% block announce %}
 
 {% endblock %}

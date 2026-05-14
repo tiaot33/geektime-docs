@@ -1,0 +1,10 @@
+site: site
+output_subdir: pagefind
+exclude_selectors:
+  - ".headerlink"
+  - ".md-source-file"
+  - ".md-footer"
+  - ".md-tabs"
+  - ".md-nav"
+  - ".md-sidebar"
+  - ".md-header"
